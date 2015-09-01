@@ -1,0 +1,68 @@
+body {
+  height: 100vh; }
+  body .row {
+    margin: 0; }
+
+#calculator {
+  width: 100vmin;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); }
+  #calculator ::selection {
+    background-color: transparent;
+    color: inherit; }
+  #calculator #result {
+    height: 28.8vmin;
+    background-color: #000000;
+    text-align: right;
+    color: #ffffff;
+    font-size: 16vmin;
+    top: 100%;
+    padding-top: 6vmin; }
+  #calculator #preview {
+    background-color: #181c18;
+    height: 11.2vmin;
+    line-height: 11.2vmin;
+    text-align: right;
+    color: #ffffff;
+    font-size: 4.8vmin; }
+  #calculator #delete {
+    background-color: #181c18;
+    height: 11.2vmin;
+    color: white;
+    text-align: center;
+    top: 50%;
+    line-height: 11.2vmin;
+    font-size: 6vmin; }
+    #calculator #delete:hover {
+      background-color: #03090c; }
+    #calculator #delete:active {
+      background-color: black; }
+  #calculator #keys .key {
+    background-color: #081821;
+    color: white;
+    height: 11.2vmin;
+    padding: 0;
+    text-align: center;
+    top: 50%;
+    line-height: 11.2vmin;
+    font-size: 6vmin; }
+    #calculator #keys .key:hover {
+      background-color: #03090c; }
+    #calculator #keys .key:active {
+      background-color: black; }
+  #calculator #keys, #calculator #operators {
+    padding: 0; }
+    #calculator #keys .container-fluid, #calculator #operators .container-fluid {
+      padding: 0; }
+  #calculator #operators .operator {
+    background-color: #181c18;
+    height: 11.2vmin;
+    color: white;
+    text-align: center;
+    top: 50%;
+    line-height: 11.2vmin;
+    font-size: 6vmin; }
+
+/*# sourceMappingURL=styles.css.map */
