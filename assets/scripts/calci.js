@@ -13,14 +13,25 @@ var calci =  {
       }
     });
     $('#calculator #delete').dblclick(function(){
+      calci.clearResult();
       $('#preview').html('');
-      $('#result').html('');
     }); 
-    ['0','1','2','3','4','5','6','7','8','9'].forEach(function(digit){
-      $(document).bind('keydown',digit,function(){
+    ['0','1','2','3','4','5','6','7','8','9','/','*','-','+'].forEach(function(digit){
+      $(document).bind('keyup',digit,function(){
         calci.handleInput(digit);
       });
       
+    });
+    $(document).bind('keyup','backspace',function(){
+      calci.handleDelete();
+    });
+    $(document).bind('keyup','shift+=',function(){
+      calci.handleInput('+');
+    });
+    ['=','return'].forEach(function(key){
+      $(document).bind('keyup',key,function(){
+        calci.evaluateResult();
+      });
     });
   },
   handleInput: function(input){
@@ -28,9 +39,15 @@ var calci =  {
   },
   handleDelete: function(){
     $('#preview').html($('#preview').html().slice(0, -1));
+    if($('#preview').html().length == 0){
+      calci.clearResult();
+    }
   },
   evaluateResult: function(){
     $('#result').html(eval($('#preview').html()));
+  },
+  clearResult: function(){
+    $('#result').html('');
   }
 }
 $(document).ready(function(){
