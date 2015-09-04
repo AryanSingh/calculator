@@ -10,6 +10,14 @@ var calci =  {
         calci.handleDelete();
       }else if (this.dataset.keyType == "equals"){
         calci.evaluateResult(); 
+      }else if(this.dataset.keyType == "dot"){
+        lastNumber=calci.getLastNumber();
+        if (lastNumber.indexOf('.') == -1){
+          if (lastNumber.length == 0){
+            calci.handleInput('0');
+          }
+          calci.handleInput('.');
+        }
       }
     });
     $('#calculator #delete').dblclick(function(){
@@ -27,6 +35,15 @@ var calci =  {
     });
     $(document).bind('keyup','shift+=',function(){
       calci.handleInput('+');
+    });
+    $(document).bind('keyup', '.' ,function(){
+      lastNumber=calci.getLastNumber();
+      if (lastNumber.indexOf('.') == -1){
+        if (lastNumber.length == 0){
+          calci.handleInput('0');
+        }
+        calci.handleInput('.');
+      }
     });
     ['=','return'].forEach(function(key){
       $(document).bind('keyup',key,function(){
@@ -48,8 +65,18 @@ var calci =  {
   },
   clearResult: function(){
     $('#result').html('');
+  },
+  getLastNumber: function(){
+    str = $('#preview').html();
+    regexp = /[+\-*\/]([0-9.])*$/
+    matches = str.match(regexp);
+    if(matches == null){
+      return str;
+    } else{
+      return matches[0].slice(1);
+    }
   }
-}
+};
 $(document).ready(function(){
   calci.init();
 });
